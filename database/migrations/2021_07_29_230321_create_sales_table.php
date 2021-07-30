@@ -14,8 +14,15 @@ class CreateSalesTable extends Migration
     public function up()
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedInteger('seller_id')->onDelete('cascade');
+            $table->float('comission');
+            $table->float('sale_value');
             $table->timestamps();
+
+            $table->foreign('seller_id')
+                ->references('id')
+                ->on('sellers');
         });
     }
 

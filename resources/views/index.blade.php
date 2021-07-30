@@ -28,7 +28,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-center">Cadastrar Vendedor</h5>
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <a href="{{url('register')}}" class="btn btn-primary ">Cadastrar</a>
+                                    <a href="{{url('seller-register')}}" class="btn btn-primary ">Cadastrar</a>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-center">Consultar Vendedor</h5>
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <a href="{{url('search')}}" class="btn btn-primary ">Pesquisar</a>
+                                    <a href="{{url('seller-search')}}" class="btn btn-primary ">Pesquisar</a>
                                 </div>
                             </div>
                         </div>

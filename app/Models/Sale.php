@@ -4,24 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sales extends Model
+class Sale extends Model
 {
     const CREATED_AT = 'created_at';
 
     public $fillable = [
         'seller_id',
-        'seller_name',
-        'seller_email',
-        'seller_comission',
+        'comission',
         'sale_value'
     ];
 
     protected $casts = [
         'id' => 'integer',
         'seller_id' => 'integer',
-        'seller_name' => 'string',
-        'seller_email' => 'string',
-        'seller_comission' => 'decimal',
+        'comission' => 'float',
         'sale_value' => 'float'
     ];
 

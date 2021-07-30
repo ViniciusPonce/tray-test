@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//    <!-- Sellers Api Routes -->
+Route::prefix('sellers')->group(function(){
+    Route::get('/', 'Api\SellerController@index');
+    Route::get('/{id}', 'Api\SellerController@show');
+
+    Route::post('/', 'Api\SellerController@store');
+    Route::put('/{id}', 'Api\SellerController@update');
+
+    Route::delete('/{id}', 'Api\SellerController@destroy');
 });
+
+
+

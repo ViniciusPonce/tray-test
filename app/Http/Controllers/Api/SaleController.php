@@ -1,25 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\Seller;
 
-class SellerController extends Controller
+class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->getRequestUri() == '/register'){
-            return view('sellers.registerSeller');
-        } elseif ($request->getRequestUri() == '/search'){
-            return view('sellers.searchSeller');
-        }
-
+        //
     }
 
     /**

@@ -13,15 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/index', function () {
     return view('index');
 });
 
-Route::get( '/register', 'SellerController@index');
-Route::get( '/search', 'SellerController@index');
 
+Route::get( '/seller-register', function (){
+    return view('sellers.registerSeller');
+});
+
+Route::get( '/seller-search', function(){
+    return view('sellers.searchSeller');
+});
 
