@@ -30,20 +30,10 @@ class SellerController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -51,7 +41,10 @@ class SellerController extends Controller
             $sellerData = $request->all();
             $this->seller->create($sellerData);
 
-            return response()->json(['msg' => 'Vendendor criado com sucesso'], 201);
+            return response()->json([
+                'success' => true,
+                'msg' => 'Vendendor criado com sucesso'
+            ], 201);
 
         } catch (\Exception $e){
             if(config('app.debug')){

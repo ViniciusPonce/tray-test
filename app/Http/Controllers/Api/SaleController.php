@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\API\ErrorsApi;
+use App\Models\Sale;
+use App\Repositories\SaleRepository;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class SaleController extends Controller
 {
+    /**
+     * @var Sale
+     */
+    private $sale;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(Sale $sale)
+    {
+        $this->sale = $sale;
+    }
+
     public function index()
     {
-        //
+        $data = ['data' => $this->sale->all()];
+        return response()->json($data);
     }
 
     /**
@@ -30,22 +45,55 @@ class SaleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $saleData = $request->all();
+            $this->sale->create($saleData);
+
+            return response()->json([
+                'success' => true,
+                'msg' => 'Venda realizada com sucesso'
+            ], 201);
+
+        } catch (\Exception $e){
+            if(config('app.debug')){
+                return response()->json(ErrorsApi::erroMsg($e->getMessage(), 1010));
+            }
+            return response()->json(ErrorsApi::erroMsg('Erro de operação', 1010));
+        }
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        //
+//        $salesData = SaleRepository::salesPerSeller($id);
+//        $salesPerSeller = $salesData->all();
+//        $data = ['data' => $salesPerSeller];
+//        return response()->json($data);
+        try {
+            $salesData = SaleRepository::salesPerSeller($id);
+            $salesPerSeller = $salesData->all();
+
+//            $data = ['data' => $salesPerSeller];
+            return response()->json([   $salesPerSeller,
+                                        'success' => true,
+                                        'msg' => 'Encontrado com sucesso'
+                                    ], 201);
+
+        } catch (\Exception $e){
+            if(config('app.debug')){
+                return response()->json(ErrorsApi::erroMsg($e->getMessage(), 1010));
+            }
+            return response()->json(ErrorsApi::erroMsg('Erro de operação', 1010));
+        }
     }
 
     /**
@@ -68,7 +116,19 @@ class SaleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $saleData = $request->all();
+            $sale = $this->sale->find($id);
+            $sale->update($saleData);
+
+            return response()->json(['msg' => 'Vendendor atualizado com sucesso'], 200);
+
+        } catch (\Exception $e){
+            if(config('app.debug')){
+                return response()->json(ErrorsApi::erroMsg($e->getMessage(), 1011));
+            }
+            return response()->json(ErrorsApi::erroMsg('Erro de operação', 1011));
+        }
     }
 
     /**

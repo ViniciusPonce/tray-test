@@ -8,10 +8,9 @@
     {
         public static function erroMsg($msg, $code){
             return [
-                'data' => [
+                    'success' => false,
                     'msg' => $msg,
                     'code' => $code
-                ]
             ];
         }
     }

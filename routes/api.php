@@ -24,6 +24,11 @@ Route::prefix('sellers')->group(function(){
 
     Route::delete('/{id}', 'Api\SellerController@destroy');
 });
+//    <!-- Sellers Api Routes -->
+Route::prefix('sales')->group(function(){
 
+
+    Route::get('/{id}', 'Api\SaleController@show');
+});
 
 
