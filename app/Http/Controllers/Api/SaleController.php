@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\API\ErrorsApi;
 use App\Models\Sale;
 use App\Repositories\SaleRepository;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -81,16 +82,18 @@ class SaleController extends Controller
         try {
             $salesData = SaleRepository::salesPerSeller($id);
             $salesPerSeller = $salesData->all();
-
-//            $data = ['data' => $salesPerSeller];
-            return response()->json([   $salesPerSeller,
-                                        'success' => true,
-                                        'msg' => 'Encontrado com sucesso'
-                                    ], 201);
-
+            if($salesPerSeller){
+                return response()->json([   $salesPerSeller,
+                                            'success' => true,
+                                            'msg' => 'Encontrado com sucesso'
+                                        ], 201);
+            }
         } catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ErrorsApi::erroMsg($e->getMessage(), 1010));
+            }
+            if (empty($salesPerSeller)){
+                return response()->json(ErrorsApi::erroMsg('ID não encontrado', 1010));
             }
             return response()->json(ErrorsApi::erroMsg('Erro de operação', 1010));
         }
