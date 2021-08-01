@@ -57,6 +57,7 @@ class SaleController extends Controller
             $seller = SaleRepository::findSeller($saleData['seller_id']);
             $comissionValue = SaleRepository::calculateComission($saleData['sale_value'], Seller::COMISSION);
             $saleValue = SaleRepository::convertSaleValue($saleData['sale_value']);
+            SaleRepository::incrementComissionSeller($seller, $comissionValue);
 
             if ($saleData){
                 Sale::create([
@@ -65,6 +66,7 @@ class SaleController extends Controller
                      'sale_value' => $saleValue
                 ]);
             }
+//            dd($comissionIncrement);
 //            $saleData = $request->all();
 //            $this->sale->create($saleData);
 

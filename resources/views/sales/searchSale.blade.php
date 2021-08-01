@@ -39,21 +39,23 @@
                     </div>
                 </div>
             </div>
-            <table id="tableSale" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
-                <thead class="text-center">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Comissão</th>
-                    <th>Valor da Venda</th>
-                    <th>Data da Venda</th>
-                </tr>
-                </thead>
-                <tbody class="text-center">
+            <div class="table-responsive">
+                <table id="tableSale" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
+                    <thead class="text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Comissão</th>
+                        <th>Valor da Venda</th>
+                        <th>Data da Venda</th>
+                    </tr>
+                    </thead>
+                    <tbody class="text-center">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -127,8 +129,7 @@
         })
     }
     function searchSaleSelect() {
-        // var id = $("#selectSeller").val();
-        // var idInt = id.toNumber()
+        $('#formSale')[0].reset();
         $.ajax({
             type: 'GET',
             url: '/api/sales/' + Number($("#selectSeller").val())

@@ -31,5 +31,12 @@ class SaleRepository
             ->first();
     }
 
+    public static function incrementComissionSeller($seller, $comission_value){
+        $increment = $seller->comission_seller + $comission_value;
+        return DB::table('sellers')
+            ->where('id', $seller->id)
+            ->update(['comission_seller' => $increment]);
+
+    }
 }
 

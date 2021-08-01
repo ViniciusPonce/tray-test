@@ -18,19 +18,21 @@
         <div class="text-center">
             <h1 style="font-weight: bold" class="bi bi-person-circle"> Vendedores </h1>
         </div>
-        <table id="tableSellers" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Comissão</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
+        <div class="table-responsive">
+            <table id="tableSellers" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Comissão</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -42,11 +44,14 @@
     });
 
     function constructLine(sellers){
+        if (sellers.comission_seller == null){
+            sellers.comission_seller = 'Sem Comissão'
+        }
         var line = "<tr>" +
             "<td>" + sellers.id + "</td>" +
             "<td>" + sellers.name + "</td>" +
             "<td>" + sellers.email + "</td>" +
-            "<td>" + sellers.comission_seller + "</td>" +
+            "<td>" + sellers.comission_seller.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) + "</td>" +
             "</tr>";
         return line;
     }
