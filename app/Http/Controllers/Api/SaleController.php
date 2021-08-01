@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\API\ErrorsApi;
 use App\Models\Sale;
+use App\Models\Seller;
 use App\Repositories\SaleRepository;
+use App\Repositories\SellerRepository;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -52,7 +54,19 @@ class SaleController extends Controller
     {
         try {
             $saleData = $request->all();
-            $this->sale->create($saleData);
+            $seller = SaleRepository::findSeller($saleData['seller_id']);
+            $comissionValue = SaleRepository::calculateComission($saleData['sale_value'], Seller::COMISSION);
+            $saleValue = SaleRepository::convertSaleValue($saleData['sale_value']);
+
+            if ($saleData){
+                Sale::create([
+                     'seller_id' => $seller->id,
+                     'comission_sale' => $comissionValue,
+                     'sale_value' => $saleValue
+                ]);
+            }
+//            $saleData = $request->all();
+//            $this->sale->create($saleData);
 
             return response()->json([
                 'success' => true,

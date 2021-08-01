@@ -14,14 +14,14 @@ class Seller extends Model
     public $fillable = [
         'name',
         'email',
-        'comission'
+        'comission_seller'
         ];
 
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
         'email' => 'string',
-        'comission' => 'float'
+        'comission_seller' => 'float'
     ];
 
     protected $rules = [

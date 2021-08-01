@@ -1,69 +1,68 @@
 @extends('layouts.front')
 @section('content');
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <button type="button" class="btn btn-dark mb-3 btn-sm" onclick="history.go(-1);">
-                            <i class="bi bi-arrow-left-short"></i>
-                            Voltar
-                        </button>
-                    </div>
-                    <div class="col d-flex justify-content-end">
-                        <a href="{{url('seller-register')}}" class="btn btn-success mb-3 btn-sm" role="button" aria-pressed="true">
-                            <i class="bi bi-plus-lg"></i>
-                            Novo Vendedor
-                        </a>
-                </div>
-                <div class="text-center">
-                    <h1 style="font-weight: bold">Vendedores</h1>
-                </div>
-                <table id="tableSellers" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>Comissão</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-
-                    </tbody>
-                </table>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-dark mb-3 btn-sm" onclick="history.go(-1);">
+                    <i class="bi bi-arrow-left-short"></i>
+                    Voltar
+                </button>
             </div>
+            <div class="col d-flex justify-content-end">
+                <a href="{{url('seller-register')}}" class="btn btn-success mb-3 btn-sm" role="button" aria-pressed="true">
+                    <i class="bi bi-plus-lg"></i>
+                    Novo Vendedor
+                </a>
         </div>
+        <div class="text-center">
+            <h1 style="font-weight: bold" class="bi bi-person-circle"> Vendedores </h1>
+        </div>
+        <table id="tableSellers" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Comissão</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+
+            </tbody>
+        </table>
     </div>
-    <script type="text/javascript">
+</div>
+<script type="text/javascript">
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        }
+    });
+
+    function constructLine(sellers){
+        var line = "<tr>" +
+            "<td>" + sellers.id + "</td>" +
+            "<td>" + sellers.name + "</td>" +
+            "<td>" + sellers.email + "</td>" +
+            "<td>" + sellers.comission_seller + "</td>" +
+            "</tr>";
+        return line;
+    }
+
+    function searchSeller(){
+        $.getJSON('/api/sellers', function(sellers){
+            for(i=0; i < sellers.data.length; i++){
+                line = constructLine(sellers.data[i]);
+                $('#tableSellers>tbody').append(line);
             }
-        });
-
-        function constructLine(sellers){
-            var line = "<tr>" +
-                "<td>" + sellers.id + "</td>" +
-                "<td>" + sellers.name + "</td>" +
-                "<td>" + sellers.email + "</td>" +
-                "<td>" + sellers.comission + "</td>" +
-                "</tr>";
-            return line;
-        }
-
-        function searchSeller(){
-            $.getJSON('/api/sellers', function(sellers){
-                for(i=0; i < sellers.data.length; i++){
-                    line = constructLine(sellers.data[i]);
-                    $('#tableSellers>tbody').append(line);
-                }
-            })
-        }
-
-        $(document).ready(function(){
-            searchSeller()
         })
+    }
+
+    $(document).ready(function(){
+        searchSeller()
+    })
 
     </script>
 @endsection

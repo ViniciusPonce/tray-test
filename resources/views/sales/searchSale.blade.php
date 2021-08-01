@@ -10,7 +10,8 @@
                 </button>
             </div>
             <div class="text-center">
-                <h1 style="font-weight: bold">Consultar Vendas</h1>
+                <h1 class="mb-4 bi bi-receipt-cutoff" style="font-weight: bold">Consultar Vendas</h1>
+                <h5 class="mb-5">Pesquise as vendas por ID do vendedor ou na listagem de todos vendedores cadastrados no sistema</h5>
             </div>
             <div class="row">
                 <div class="col">
@@ -19,7 +20,9 @@
                             <label>Digite o ID do vendedor</label>
                             <input type="number" class="form-control" id="inputIdSeller" placeholder="ID">
                         </div>
-                        <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+                        </div>
                     </form>
                 </div>
                 <div class="col">
@@ -30,7 +33,9 @@
 
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary mb-3 " onclick="searchSaleSelect()">Pesquisar</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mb-3 " onclick="searchSaleSelect()">Pesquisar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,8 +79,8 @@
             "<td>" + sellers.id + "</td>" +
             "<td>" + sellers.name + "</td>" +
             "<td>" + sellers.email + "</td>" +
-            "<td>" + sellers.comission + "</td>" +
-            "<td>" + sellers.sale_value + "</td>" +
+            "<td>" + sellers.comission_sale.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) + "</td>" +
+            "<td>" + sellers.sale_value.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) + "</td>" +
             "<td>" + sellers.created_at + "</td>" +
             "</tr>";
         return line;
@@ -147,7 +152,7 @@
             } else {
                 Swal.fire({
                     title: 'Oops!',
-                    text: 'ID não encontrado',
+                    text: 'Este vendedor nao possui venda cadastrada',
                     icon: 'warning',
                     showConfirmButton: false,
                     timer: 2000

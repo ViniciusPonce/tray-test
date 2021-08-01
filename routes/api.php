@@ -27,8 +27,8 @@ Route::prefix('sellers')->group(function(){
 //    <!-- Sellers Api Routes -->
 Route::prefix('sales')->group(function(){
 
-
     Route::get('/{id}', 'Api\SaleController@show');
+    Route::post('/', 'Api\SaleController@store');
 });
 
 

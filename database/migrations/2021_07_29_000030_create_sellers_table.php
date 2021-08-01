@@ -17,7 +17,7 @@ class CreateSellersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->float('comission', 5, 2)->nullable();
+            $table->float('comission_seller', 5, 2)->nullable();
             $table->timestamps();
         });
     }

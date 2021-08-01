@@ -10,14 +10,14 @@ class Sale extends Model
 
     public $fillable = [
         'seller_id',
-        'comission',
+        'comission_sale',
         'sale_value'
     ];
 
     protected $casts = [
         'id' => 'integer',
         'seller_id' => 'integer',
-        'comission' => 'float',
+        'comission_sale' => 'float',
         'sale_value' => 'float'
     ];
 
