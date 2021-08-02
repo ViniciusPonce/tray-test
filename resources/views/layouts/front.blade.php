@@ -43,6 +43,9 @@
 
 <div class="container py-5" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-4">
+        <a href="{{url('/')}}">
+            <img src="https://asaplog.com.br/wp-content/uploads/2018/10/tray.png" width="50" height="60" style="margin-left: 20px" class="d-inline-block align-top" alt="">
+        </a>
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->

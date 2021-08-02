@@ -21,7 +21,7 @@
                             <input type="number" class="form-control" id="inputIdSeller" placeholder="ID">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+                            <button type="submit" class="btn btn-primary mb-3" style="background-color: #3b5998;">Pesquisar</button>
                         </div>
                     </form>
                 </div>
@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary mb-3 " onclick="searchSaleSelect()">Pesquisar</button>
+                            <button type="submit" class="btn btn-primary mb-3" style="background-color: #3b5998;" onclick="searchSaleSelect()">Pesquisar</button>
                         </div>
                     </div>
                 </div>

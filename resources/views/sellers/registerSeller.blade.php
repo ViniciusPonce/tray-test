@@ -21,7 +21,7 @@
                     <input type="text" class="form-control" id="inputEmail" placeholder="Email">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary" style="background-color: #3b5998;">Cadastrar</button>
                 </div>
             </form>
         </div>

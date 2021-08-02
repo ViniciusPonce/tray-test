@@ -26,7 +26,7 @@
                         <input type="tel" class="form-control maskMonek" id="inputValue" placeholder="Valor">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Realizar Venda</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #3b5998;">Realizar Venda</button>
                     </div>
                 </div>
             </form>
