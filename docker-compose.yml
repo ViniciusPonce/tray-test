@@ -1,8 +1,13 @@
 
 version: '3.1'
 services:
+    redis:
+      image: 'redis:alpine'
+      container_name: 'tray-redis'
+
     mysql:
         image: 'mysql:5.7'
+        container_name: 'tray-mysql'
         working_dir: /application
         volumes:
             - '.:/application'
@@ -16,6 +21,7 @@ services:
 
     webserver:
         image: 'nginx:alpine'
+        container_name: 'tray-nginx'
         working_dir: /application
         volumes:
             - '.:/application'
@@ -25,6 +31,7 @@ services:
 
     php-fpm:
         build: docker/php-fpm
+        container_name: 'tray-phpfpm'
         working_dir: /application
         volumes:
             - '.:/application'

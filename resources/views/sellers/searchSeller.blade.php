@@ -20,7 +20,7 @@
         </div>
         <div class="table-responsive">
             <table id="tableSellers" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
-                <thead>
+                <thead class="text-center">
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>

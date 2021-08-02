@@ -112,7 +112,7 @@
             } else {
                 Swal.fire({
                     title: 'Oops!',
-                    text: 'ID não encontrado',
+                    text: 'Este vendedor nao possui venda cadastrada',
                     icon: 'warning',
                     showConfirmButton: false,
                     timer: 2000

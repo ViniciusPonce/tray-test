@@ -11,4 +11,9 @@ class SellerRepository
             ->where('id', $seller_id)
             ->first();
     }
+
+    public static function findSellersMail(){
+        return DB::table('sellers')
+            ->get();
+    }
 }

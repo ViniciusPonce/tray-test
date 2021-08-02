@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Seller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 

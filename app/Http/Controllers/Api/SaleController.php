@@ -160,4 +160,10 @@ class SaleController extends Controller
     {
         //
     }
+
+    public function showSalesMail()
+    {
+        $data = $this->sale->all();
+        return response()->json($data);
+    }
 }
