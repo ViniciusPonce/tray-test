@@ -15,8 +15,7 @@
         "guzzlehttp/guzzle": "^7.3",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "2.4",
-      "ext-http": "*"
+        "laravel/ui": "2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
