@@ -9,7 +9,7 @@ PHP Programmer Test
 
 Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 
-##Requisitos
+## Requisitos
 
 * [Composer](https://getcomposer.org/)
 * [PHP >= 7.4](https://www.php.net/)
