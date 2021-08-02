@@ -26,8 +26,13 @@ Route::prefix('sellers')->group(function(){
 });
 //    <!-- Sales Api Routes -->
 Route::prefix('sales')->group(function(){
+    Route::get('/', 'Api\SaleController@index');
     Route::get('/{id}', 'Api\SaleController@show');
+
     Route::post('/', 'Api\SaleController@store');
+    Route::put('/{id}', 'Api\SaleController@update');
+
+    Route::delete('/{id}', 'Api\SaleController@destroy');
 });
 
 

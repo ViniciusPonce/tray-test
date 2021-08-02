@@ -6,7 +6,6 @@ use App\API\ErrorsApi;
 use App\Models\Sale;
 use App\Models\Seller;
 use App\Repositories\SaleRepository;
-use App\Repositories\SellerRepository;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -30,18 +29,8 @@ class SaleController extends Controller
 
     public function index()
     {
-        $data = ['data' => $this->sale->all()];
+        $data = $this->sale->all();
         return response()->json($data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -69,7 +58,6 @@ class SaleController extends Controller
                         ]
                     );
                 }
-
 
                 return response()->json(
                     [
@@ -115,16 +103,6 @@ class SaleController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -158,7 +136,21 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        try {
+            $sale = $id;
+            $sale->delete();
 
+            if (empty($sale)){
+                return response()->json(['msg' => 'Venda não encontrada'], 200);
+            }
+
+            return response()->json(['msg' => 'Venda deletada com sucesso'], 200);
+
+        } catch (\Exception $e){
+            if(config('app.debug')){
+                return response()->json(ErrorsApi::erroMsg($e->getMessage(), 1012));
+            }
+            return response()->json(ErrorsApi::erroMsg('Erro de operação', 1012));
+        }
+    }
 }

@@ -108,9 +108,7 @@ function createSale(){
             timer: 2000
         })
     });
-    // location.reload();
 };
-
 
 $(document).ready(function(){
     selectSeller()

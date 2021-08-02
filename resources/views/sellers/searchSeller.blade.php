@@ -26,7 +26,6 @@
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Comissão</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -53,7 +52,6 @@
             "<td>" + sellers.name + "</td>" +
             "<td>" + sellers.email + "</td>" +
             "<td>" + sellers.comission_seller.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) + "</td>" +
-            "<td>" + '<a href=""  role="button" aria-pressed="true"><i class="bi bi-pencil-fill" style="color: black"></i></a> <a href=""  role="button" aria-pressed="true"><i class="bi bi-trash-fill" style="color: black"></i></a>' + "<td>"
             "</tr>";
         return line;
     }

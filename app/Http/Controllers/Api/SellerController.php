@@ -72,17 +72,6 @@ class SellerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -117,6 +106,10 @@ class SellerController extends Controller
         try {
             $seller = $id;
             $seller->delete();
+
+            if (empty($seller)){
+                return response()->json(['msg' => 'Vendendor não encontrado'], 200);
+            }
 
             return response()->json(['msg' => 'Vendendor deletado com sucesso'], 200);
 
