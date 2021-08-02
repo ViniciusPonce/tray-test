@@ -40,6 +40,7 @@ Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 * ```npm install```
 * ```npm run dev```
 * ```docker-compose up -d```
+* ```docker-compose exec php-fpm bash php artisan key:generate```
 * ```docker-compose exec php-fpm bash php artisan migrate``` 
 ####Para ativar o cron (rotina) de disparo de email confirada para 21:00Hrs de acordo com a hora do servidor, basta executar o comando abaixo:
 * ```docker-compose exec php-fpm bash service cron start```
@@ -52,3 +53,6 @@ Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 * ##### webserver:
 #### ou
 * #### mysql: (caso for alterado a porta da imagem mysql, alterar tambem as variveis do arquivo ```.env```, citadas acima)
+
+* Caso seja testa em SO Linux, poderá pedir permissão na pasta 
+#### ```sudo chmod 777 -R storage/```
