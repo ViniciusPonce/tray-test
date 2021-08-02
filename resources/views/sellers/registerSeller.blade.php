@@ -35,6 +35,16 @@
         });
 
         function createSeller(){
+            if ($("#inputName").val() === "" || $("#inputEmail").val() === "") {
+                Swal.fire({
+                    title: 'Oops!',
+                    text: 'Preencha os campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
+                location.stop();
+            }
             seller = {
                 name: $("#inputName").val(),
                 email: $("#inputEmail").val()
@@ -50,7 +60,7 @@
                         text: 'Vendedor cadastrado com sucesso',
                         icon: 'success',
                         showConfirmButton: false,
-                        timer: 2000
+                        timer: 4000
                     })
                     location.reload()
                 }else{
@@ -59,7 +69,7 @@
                         text: 'Verifique os dados e tente novamente',
                         icon: 'warning',
                         showConfirmButton: false,
-                        timer: 2000
+                        timer: 4000
                     })
                 }
                 }).fail(function(){
@@ -68,7 +78,7 @@
                     text: 'Houve um erro no processo',
                     icon: 'error',
                     showConfirmButton: false,
-                    timer: 2000
+                    timer: 4000
                 })
             });
                 // location.reload();

@@ -39,12 +39,17 @@ class SellerController extends Controller
     {
         try {
             $sellerData = $request->all();
+//            $sellerRegister = Seller::all();
+
             $this->seller->create($sellerData);
 
-            return response()->json([
-                'success' => true,
-                'msg' => 'Vendendor criado com sucesso'
-            ], 201);
+            return response()->json(
+                [
+                    'success' => true,
+                    'msg' => 'Vendendor criado com sucesso'
+                ],
+                201
+            );
 
         } catch (\Exception $e){
             if(config('app.debug')){

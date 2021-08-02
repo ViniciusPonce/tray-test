@@ -61,12 +61,21 @@ $(function(){
 });
 
 function createSale(){
+    if ($("#inputValue").val() === "") {
+        Swal.fire({
+            title: 'Oops!',
+            text: 'Preencha os campos',
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        location.stop();
+    }
     var value = $("#inputValue").maskMoney('unmasked')[0]
     sale = {
         seller_id: Number($("#selectSeller").val()),
         sale_value: value
     };
-    console.log(sale)
     $.ajax({
         type: 'POST',
         url: '/api/sales',
@@ -80,7 +89,7 @@ function createSale(){
                 showConfirmButton: false,
                 timer: 4000
             })
-            location.reload()
+            location.reload();
         }else{
             Swal.fire({
                 title: 'Oops!',

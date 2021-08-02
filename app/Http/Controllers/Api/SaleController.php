@@ -54,27 +54,31 @@ class SaleController extends Controller
     {
         try {
             $saleData = $request->all();
-            $seller = SaleRepository::findSeller($saleData['seller_id']);
-            $comissionValue = SaleRepository::calculateComission($saleData['sale_value'], Seller::COMISSION);
-            $saleValue = SaleRepository::convertSaleValue($saleData['sale_value']);
-            SaleRepository::incrementComissionSeller($seller, $comissionValue);
+            if ($saleData['sale_value'] > 0) {
+                $seller = SaleRepository::findSeller($saleData['seller_id']);
+                $comissionValue = SaleRepository::calculateComission($saleData['sale_value'], Seller::COMISSION);
+                $saleValue = SaleRepository::convertSaleValue($saleData['sale_value']);
+                SaleRepository::incrementComissionSeller($seller, $comissionValue);
 
-            if ($saleData){
-                Sale::create([
-                     'seller_id' => $seller->id,
-                     'comission_sale' => $comissionValue,
-                     'sale_value' => $saleValue
-                ]);
+                if ($saleData) {
+                    Sale::create(
+                        [
+                            'seller_id' => $seller->id,
+                            'comission_sale' => $comissionValue,
+                            'sale_value' => $saleValue
+                        ]
+                    );
+                }
+
+
+                return response()->json(
+                    [
+                        'success' => true,
+                        'msg' => 'Venda realizada com sucesso'
+                    ],
+                    201
+                );
             }
-//            dd($comissionIncrement);
-//            $saleData = $request->all();
-//            $this->sale->create($saleData);
-
-            return response()->json([
-                'success' => true,
-                'msg' => 'Venda realizada com sucesso'
-            ], 201);
-
         } catch (\Exception $e){
             if(config('app.debug')){
                 return response()->json(ErrorsApi::erroMsg($e->getMessage(), 1010));
@@ -91,10 +95,6 @@ class SaleController extends Controller
      */
     public function show($id)
     {
-//        $salesData = SaleRepository::salesPerSeller($id);
-//        $salesPerSeller = $salesData->all();
-//        $data = ['data' => $salesPerSeller];
-//        return response()->json($data);
         try {
             $salesData = SaleRepository::salesPerSeller($id);
             $salesPerSeller = $salesData->all();
@@ -161,9 +161,4 @@ class SaleController extends Controller
         //
     }
 
-    public function showSalesMail()
-    {
-        $data = $this->sale->all();
-        return response()->json($data);
-    }
 }

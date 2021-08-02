@@ -40,9 +40,9 @@ class ReportSeller extends Mailable
         $totalValue = $sales->sum('sale_value');
 
         return $this->view('mail.ReportSeller')->with([
-                                                                   'totalSale' => $totalSale,
-                                                                   'totalValue' => $totalValue
-                                                               ]);
+                                                       'totalSale' => $totalSale,
+                                                       'totalValue' => $totalValue
+                                                       ]);
 
 //        return $this->markdown('mail.ReportSeller', compact( 'totalSale', 'totalValue'));
     }
