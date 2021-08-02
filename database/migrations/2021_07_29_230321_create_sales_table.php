@@ -16,8 +16,8 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('seller_id')->onDelete('cascade');
-            $table->float('comission_sale');
-            $table->float('sale_value');
+            $table->float('comission_sale', 15, 2);
+            $table->float('sale_value', 15, 2);
             $table->timestamps();
 
             $table->foreign('seller_id')
