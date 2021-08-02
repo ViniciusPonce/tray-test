@@ -83,7 +83,7 @@
             "<td>" + sellers.email + "</td>" +
             "<td>" + sellers.comission_sale.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) + "</td>" +
             "<td>" + sellers.sale_value.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) + "</td>" +
-            "<td>" + sellers.created_at + "</td>" +
+            "<td>" + sellers.created_at.replace(/(\d*)-(\d*)-(\d*).*/, '$3-$2-$1') + "</td>" +
             "</tr>";
         return line;
     }
