@@ -30,8 +30,8 @@ Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 * MAIL_MAILER=smtp
 * MAIL_HOST=smtp.mailtrap.io
 * MAIL_PORT=2525
-* MAIL_USERNAME=d3bef8443639a4
-* MAIL_PASSWORD=c00c6f9ccc211c
+* MAIL_USERNAME=d3bef8443639a4 (configurar parametros do mailtrap para teste)
+* MAIL_PASSWORD=c00c6f9ccc211c (configurar parametros do mailtrap para teste)
 * MAIL_ENCRYPTION=tls
 * MAIL_FROM_ADDRESS=mail_teste@tray.net.br (Pode ser qualquer email, somente para teste no mailtrap)
 
@@ -40,7 +40,12 @@ Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 * ```npm install```
 * ```npm run dev```
 * ```docker-compose up -d```
-* ```docker-compose exec php-fpm bash php artisan migrate```
+* ```docker-compose exec php-fpm bash php artisan migrate``` 
+####Para ativar o cron (rotina) de disparo de email confirada para 21:00Hrs de acordo com a hora do servidor, basta executar o comando abaixo:
+* ```docker-compose exec php-fpm bash service cron start```
+#####
+* Para consultar a hora do servidor:  ```docker-compose exec php-fpm bash date```
+
 
 ##### 3 - Se houver a necessidade, alterar as a variavel ```ports:``` dentro do arquivo docker-compose.yml referente ao container utilizado:
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <link rel="icon" href="https://images.tcdn.com.br/static_inst/site/vendedor/tray-cdn/uploads/favicon_tray-plataforma-de-ecommerce_32X32px.png?v=_08202102_" sizes="32x32" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- Font Awesome -->
@@ -44,7 +45,7 @@
 <div class="container py-5" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-4">
         <a href="{{url('/')}}">
-            <img src="https://asaplog.com.br/wp-content/uploads/2018/10/tray.png" width="50" height="60" style="margin-left: 20px" class="d-inline-block align-top" alt="">
+            <img src="https://images.tcdn.com.br/static_inst/site/vendedor/tray-cdn/uploads/logo-header.svg" width="50" height="60" style="margin-left: 20px" class="d-inline-block align-top" alt="">
         </a>
         <!-- Container wrapper -->
         <div class="container-fluid">
