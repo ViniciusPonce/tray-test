@@ -24,7 +24,7 @@ Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 * DB_HOST=mysql
 * DB_PORT=3306
 * DB_DATABASE=tray
-* DB_USERNAME=root
+* DB_USERNAME=user
 * DB_PASSWORD=root
 ####
 * MAIL_MAILER=smtp
