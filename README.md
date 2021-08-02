@@ -44,6 +44,6 @@ Projeto desenvolvido em [Laravel 7](https://laravel.com/docs/8.x)
 
 ##### 3 - Se houver a necessidade, alterar as a variavel ```ports:``` dentro do arquivo docker-compose.yml referente ao container utilizado:
 
-* #####webserver:
+* ##### webserver:
 ####ou
-* ####mysql: (caso for alterado a porta da imagem mysql, alterar tambem as variveis do arquivo ```.env```, citadas acima)
+* #### mysql: (caso for alterado a porta da imagem mysql, alterar tambem as variveis do arquivo ```.env```, citadas acima)
