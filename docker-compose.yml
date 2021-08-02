@@ -30,7 +30,7 @@ services:
             - '8084:80'
 
     php-fpm:
-        build: docker/php-fpm
+        image: viniciusponce/tray-programmer
         container_name: 'tray-phpfpm'
         working_dir: /application
         volumes:
