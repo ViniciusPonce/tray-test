@@ -39,11 +39,3 @@ Route::get( '/new-sale', function (){
 Route::get( '/search-sales', function(){
     return view('sales.searchSale');
 });
-
-Route::get('send-mail', function(){
-    return new \App\Mail\ReportSeller();
-});
-
-Route::get('/test-mail', function(){
-    return view('mail.ReportSeller');
-});

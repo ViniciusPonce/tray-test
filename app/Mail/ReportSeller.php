@@ -36,7 +36,7 @@ class ReportSeller extends Mailable
         $today = Carbon::now()->format('Y-m-d');
         $sales = Sale::whereDate('created_at', $today);
 
-        $totalSale = $sales->count();
+        $totalSale = $sales->sum('id');
         $totalValue = $sales->sum('sale_value');
 
         return $this->view('mail.ReportSeller')->with([
